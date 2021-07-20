@@ -43,7 +43,7 @@ public class BillServiceImplementation implements BillService {
         List<Bill> allCustomerBills = billRepository.findByCustomerId(customerId);
         return allCustomerBills
                 .stream()
-                .map(bill -> billMapper.billToBillResponseDTO(bill))
+                .map(billMapper::billToBillResponseDTO)
                 .collect(Collectors.toList());
     }
 

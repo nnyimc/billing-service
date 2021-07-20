@@ -22,7 +22,7 @@ public class BillController {
         return billService.getBill(id);
     }
 
-    @GetMapping(path="/billings/{customerId}")
+    @GetMapping(path="/billingsBycustomer/{customerId}")
     public List<BillResponseDTO> getBillByCustomer(@PathVariable String customerId) {
         return billService.listBillsByCustomer(customerId);
     }
