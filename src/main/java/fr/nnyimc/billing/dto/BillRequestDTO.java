@@ -1,5 +1,4 @@
 package fr.nnyimc.billing.dto;
-
 import lombok.*;
 import java.math.BigDecimal;
 

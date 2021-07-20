@@ -1,8 +1,5 @@
 package fr.nnyimc.billing.service;
-
-import fr.nnyimc.billing.dto.BillRequestDTO;
-import fr.nnyimc.billing.dto.BillResponseDTO;
-
+import fr.nnyimc.billing.dto.*;
 import java.util.List;
 
 public interface BillService {

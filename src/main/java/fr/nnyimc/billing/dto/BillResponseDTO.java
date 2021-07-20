@@ -2,7 +2,6 @@ package fr.nnyimc.billing.dto;
 
 import fr.nnyimc.billing.models.Customer;
 import lombok.*;
-
 import java.math.BigDecimal;
 import java.util.Date;
 

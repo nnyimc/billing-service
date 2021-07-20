@@ -1,7 +1,6 @@
 package fr.nnyimc.billing.service;
 
-import fr.nnyimc.billing.dto.BillRequestDTO;
-import fr.nnyimc.billing.dto.BillResponseDTO;
+import fr.nnyimc.billing.dto.*;
 import fr.nnyimc.billing.entities.Bill;
 import fr.nnyimc.billing.mappers.BillMapper;
 import fr.nnyimc.billing.models.Customer;
@@ -10,9 +9,7 @@ import fr.nnyimc.billing.restClient.CustomerRestClient;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service

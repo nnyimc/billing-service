@@ -1,17 +1,15 @@
 package fr.nnyimc.billing.web;
 
-import fr.nnyimc.billing.dto.BillRequestDTO;
-import fr.nnyimc.billing.dto.BillResponseDTO;
+import fr.nnyimc.billing.dto.*;
 import fr.nnyimc.billing.service.BillService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import java.util.*;
 
 
 @RestController
 @RequestMapping(path = "/api")
 public class BillController {
-    private BillService billService;
+    private final BillService billService;
 
     public BillController( BillService billService) {
         this.billService = billService;
