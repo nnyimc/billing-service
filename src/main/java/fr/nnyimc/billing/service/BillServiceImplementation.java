@@ -2,6 +2,7 @@ package fr.nnyimc.billing.service;
 
 import fr.nnyimc.billing.dto.*;
 import fr.nnyimc.billing.entities.Bill;
+import fr.nnyimc.billing.exceptions.CustomerNotFoundException;
 import fr.nnyimc.billing.mappers.BillMapper;
 import fr.nnyimc.billing.models.Customer;
 import fr.nnyimc.billing.repository.BillRepository;
@@ -18,6 +19,7 @@ public class BillServiceImplementation implements BillService {
     private final BillMapper billMapper;
     private final BillRepository billRepository;
     private final CustomerRestClient customerRestClient;
+    private Customer customer;
 
     public BillServiceImplementation(BillMapper billMapper,
                                      BillRepository billRepository,
@@ -58,7 +60,11 @@ public class BillServiceImplementation implements BillService {
         Bill addedBill = billMapper.billRequestDTOToBill(billRequestDTO);
         addedBill.setId(UUID.randomUUID().toString());
         addedBill.setDate(new Date());
-        Customer customer = customerRestClient.getCustomer(addedBill.getCustomerId());
+        try {
+            customer = customerRestClient.getCustomer(addedBill.getCustomerId());
+        } catch (Exception e) {
+             throw new CustomerNotFoundException("The provided customer doesn't exist!!");
+        }
         billRepository.save(addedBill);
         addedBill.setCustomer(customer);
         return billMapper.billToBillResponseDTO(addedBill);

@@ -2,6 +2,8 @@ package fr.nnyimc.billing.web;
 
 import fr.nnyimc.billing.dto.*;
 import fr.nnyimc.billing.service.BillService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -33,5 +35,10 @@ public class BillController {
     @DeleteMapping(path="/billings")
     public BillResponseDTO deleteBill(@RequestBody BillRequestDTO billRequestDTO) {
         return billService.deleteBill(billRequestDTO);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> exceptionHandler(Exception e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
